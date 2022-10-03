@@ -154,15 +154,15 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |------+------+------+------+------+------+------|      |------+------+------+------+------+------+------|
  * |LShft(|   Z  |   X  |   M  |   C  |   V  |      |      |      |   K  |   L  |   <  |   >  |   /  |RShft)|
  * |------+------+------+------+------+------+------|      |------+------+------+------+------+------+------|
- * |   `  | Ctrl |  Win |  Alt | Bspc |    Space    |      |    Bspc     | Enter|  Tab |   [  |  ]   |      |
+ * |   `  | Ctrl |  Win |  Alt | Bspc |    Space    |      |    Bspc     | Enter|  Tab |   [  |  ]   |MO(LWR|
  * `------------------------------------------------'      `------------------------------------------------'
  */
   [_WORKMAN] = LAYOUT_ortho_5x14(
-    TD(_EQL_PLUS),  TD(_1_F1) ,   TD(_2_F2) ,   TD(_3_F3) ,   TD(_4_F4) ,   TD(_5_F5) ,   KC_NO   ,          KC_NO  ,   TD(_6_F6)  ,  TD(_7_F7)  ,  TD(_8_F8) ,  TD(_9_F9)  ,  TD(_10_F10),    TD(_MINS_EQL) ,
-    KC_TAB,         KC_Q   ,      KC_D,         KC_R   ,      KC_W   ,      KC_B   ,      KC_NO   ,          KC_NO  ,   KC_J   ,      KC_F   ,      KC_U   ,      KC_P   ,      TD(_SEMI_COL),  TD(_BSLS_PIPE),
-    TD(_ESC_CAPS),  KC_A   ,      KC_S,         KC_H   ,      KC_T   ,      KC_G   ,      KC_HOME ,          KC_END ,   KC_Y   ,      KC_N   ,      KC_E   ,      KC_O,         KC_I,           TD(_APOS_QUOT) ,
-    KC_LSPO,        KC_Z   ,      KC_X   ,      KC_M,         KC_C   ,      KC_V   ,      KC_NO   ,          KC_NO  ,   KC_K   ,      KC_L,         TD(_COM_LT) , TD(_PER_GT),  TD(_SLSH_QM),   KC_RSPC ,
-    TD(_GRV_TILDE), KC_LCTL,      KC_LEFT_GUI , KC_LALT,      KC_BSPC,      KC_SPACE,     KC_SPACE,          KC_BSPC ,  KC_BSPC,      KC_ENT,       KC_TAB  ,     TD(_OP_SQ),   TD(_CL_SQ),     MO(_LOWER)
+    TD(_EQL_PLUS),  TD(_1_F1),  TD(_2_F2)   , TD(_3_F3), TD(_4_F4), TD(_5_F5), KC_NO   ,     KC_NO  , TD(_6_F6), TD(_7_F7), TD(_8_F8)  , TD(_9_F9)  , TD(_10_F10)  , TD(_MINS_EQL) ,
+    KC_TAB       ,  KC_Q     ,  KC_D        , KC_R     , KC_W     , KC_B     , KC_NO   ,     KC_NO  , KC_J     , KC_F     , KC_U       , KC_P       , TD(_SEMI_COL), TD(_BSLS_PIPE),
+    TD(_ESC_CAPS),  KC_A     ,  KC_S        , KC_H     , KC_T     , KC_G     , KC_HOME ,     KC_END , KC_Y     , KC_N     , KC_E       , KC_O       , KC_I         , TD(_APOS_QUOT) ,
+    KC_LSPO      ,  KC_Z     ,  KC_X        , KC_M     , KC_C     , KC_V     , KC_NO   ,     KC_NO  , KC_K     , KC_L     , TD(_COM_LT), TD(_PER_GT), TD(_SLSH_QM) , KC_RSPC ,
+    TD(_GRV_TILDE), KC_LCTL  ,  KC_LEFT_GUI , KC_LALT  , KC_BSPC  , KC_SPACE , KC_SPACE,     KC_BSPC, KC_BSPC  , KC_ENT   , KC_TAB     , TD(_OP_SQ) , TD(_CL_SQ)   , MO(_LOWER)
   ),
 
 /* Lower
@@ -175,7 +175,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |------+------+------+------+------+------+------|      |------+------+------+------+------+------+------|
  * |RGB_TOG|      |  F7  |  F8  |  F9  |  F10 |  F11 |      |  F12 |RGB_MODE_FORWARD|RGB_VAD|RGB_VAI|RGB_HUD|RGB_HUI|RGB_TOG|
  * |------+------+------+------+------+------+------|      |------+------+------+------+------+------+------|
- * |      |      |      |      |      |      |      |      |      |      | Next | Vol- | Vol+ | Play |xxxxxx|
+ * |      |      |      |      |      |      |      |      |      |RGB_MODE_PLAIN| Next | Vol- | Vol+ | Play |xxxxxx|
  * `------------------------------------------------'      `------------------------------------------------'
  */
   [_LOWER] = LAYOUT_ortho_5x14(
@@ -183,7 +183,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     KC_UNDS, _______, KC_EXLM, KC_AT  , KC_HASH, KC_DLR , KC_PERC,     KC_CIRC, KC_AMPR, KC_ASTR, KC_LPRN, KC_RPRN, KC_LCBR, KC_RCBR,
     KC_PLUS, _______, KC_F1  , KC_F2  , KC_F3  , KC_F4  , KC_F5  ,     KC_F6  , KC_UNDS, KC_PLUS, KC_LCBR, KC_RCBR, _______, _______,
     RGB_TOG, _______, KC_F7  , KC_F8  , KC_F9  , KC_F10 , KC_F11 ,     KC_F12 , RGB_MODE_FORWARD, RGB_VAD, RGB_VAI, RGB_HUD, RGB_HUI, RGB_TOG,
-    _______, _______, _______, _______, _______, _______, _______,     _______, _______, KC_MNXT, KC_VOLD, KC_VOLU, KC_MPLY, KC_TRNS
+    _______, _______, _______, _______, _______, _______, _______,     _______, RGB_MODE_PLAIN, KC_MNXT, KC_VOLD, KC_VOLU, KC_MPLY, KC_TRNS
   ),
 
 /* Raise
@@ -284,7 +284,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   return true;
 }
 
-
+// TODO - add rgb matrix support
 
 td_state_t cur_dance(qk_tap_dance_state_t *state) {
     if (state->count == 1) {
