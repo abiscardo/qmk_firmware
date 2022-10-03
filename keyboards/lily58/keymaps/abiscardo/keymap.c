@@ -1364,7 +1364,7 @@ void _bsls_reset(qk_tap_dance_state_t *state, void *user_data) {
             break;
         case TD_DOUBLE_HOLD:
             unregister_code(KC_LSHIFT);
-            unregister_code(KC_BSLS);
+            unregister_code(KC_EQUAL);
             break;
         case TD_DOUBLE_SINGLE_TAP:
             unregister_code(KC_BSLS);
